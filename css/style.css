@@ -346,3 +346,8 @@ button.btn.btn-big.contact-btn {
 	padding-top: 20px;
 }
 
+/* BLOG */
+
+.row {
+	flex-wrap: wrap;
+}
