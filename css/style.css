@@ -351,3 +351,46 @@ button.btn.btn-big.contact-btn {
 .row {
 	flex-wrap: wrap;
 }
+
+.blog_post {
+	margin-bottom: 30px;
+}
+
+.blog_post .info {
+	margin: 20px 0px;
+}
+
+.blog_post .info i {
+	display: inline-block;
+	margin-right: 20px;
+}
+
+.blog_post a {
+	text-decoration: underline;
+	color: black;
+}
+
+/* FORM REGISTRATION */
+
+.reg_form h3 {
+	text-align: center;
+	margin: 33px;
+}
+
+.reg_form input {
+	height: 2.2rem;
+}
+	
+
+.reg_form a {
+	font-size: 1.2rem;
+	transition: all .3s;
+	color: #5c5b5b;
+	text-decoration: underline;
+	margin-left: 70px;
+}
+
+.reg_form a:hover {
+	margin-left: 55px;
+	transition: all .3s;
+}
