@@ -1,3 +1,6 @@
+<?php
+include("path.php");
+?>
 <!doctype html>
 <html lang="en">
   <head>
@@ -17,34 +20,13 @@
     <link href="https: //fonts.googleapis.com/css2? family= Comfortaa:wght@300 & display=swap" rel="stylesheet">
   </head>
   <body>
-    <header class = "container-fluid">
-	  <div class = "container">
-	    <div class = "row">
-		  <div class = "col-4">
-		    <h1> 
-			<a href = "index.html"> My Site </a> 
-			<i class="fa-solid fa-fish"></i>
-			</h1>
-		</div>
-	    <nav class = "col-8">
-		  <ul>
-		    <li><a href = "#"> Головна </a></li>
-			<li><a href = "#"> Про нас </a></li>
-			<li><a href = "#"> Налаштування </a></li>
-			
-			<li>
-			<a href = "#"><i class="fa-solid fa-user"></i> Мій профіль </a>
-		       <ul>
-			    <li><a href = "#"> Адміністративна панель </a></li>
-			    <li><a href = "#"> Вихід </a></li>
-			   </ul>
-			</li>
-	      </ul>
-		</nav>
-	</div>
-</div>
-</header>
-
+  
+    <!-- HEADER -->
+	 <?php
+    include("srt/clude/header.php");
+	?>
+    <!-- HEADER -->
+	
 <!-- Block main START -->
 
 <div class = "container">
@@ -58,21 +40,44 @@
 	  <div class = "blog_post row"> 
 	  <div class = "img col-12">
 	    <img src = "images/hp.png" alt = "" class = "img-thumbnail">
+		<div class = "info">
+		<i class = "far fa-user"> Ben </i>
+        <i class = "fa-regular fa-calendar"> 10 Січня 2023 рік</i>
+		</div>
 </div>
 <div class = "blog_post_text col-12">
 
+<h3> Підібрані цитати </h3>
+
  <p>1.Яка різниця, хто сильніший, хто розумніший, хто красивіший, хто багатший? 
- Адже, в кінцевому підсумку, має значення тільки те, щаслива ти людина чи ні.
+ Адже, в кінцевому підсумку, має значення тільки те, щаслива ти людина чи ні.<br>
   – Ошо</p>
 <p>2.Люди можуть бути щасливі лише за умови, що вони не вважають щастя метою 
-життя. 
+життя.<br> 
  – Джордж Оруелл</p>
 <p>3.Багато хто шукає щастя в сферах вище свого рівня, інші – нижче. Але щастя 
-одного зросту з людиною. 
+одного зросту з людиною.<br> 
  – Конфуцій</p>
 <p>4.Однією з головних ознак щастя і гармонії є повна відсутність 
-потреби комусь щось доводити.
- - Нельсон Мандела</p>
+потреби комусь щось доводити.<br>
+ – <a href = "#">Нельсон Мандела</a> </p>
+<p>5.Для щастя треба або зменшити бажання, або збільшити засоби.<br> 
+  – Бенджамін Франклін</p>
+<p>6.Здоровий жебрак щасливіший за хворого короля.<br> 
+ – Артур Шопенгауер </p>
+<p>7.Книга про щастя складалася б з однієї сторінки. Про смуток можна писати
+ безкінечно довго.<br> 
+  – Януш Леон Вишневський</p>
+<p>8.Щастя – це не вдале поєднання зовнішніх обставин. Це просто стан 
+вашого розуму.<br> 
+ – Сіддхартха Гаутама (Будда)</p>
+<p>9.Бути щасливим не означає, що у вас все досконало, це означає, що ви 
+навчилися дивитися крізь недосконалості.<br>
+ – Пріянка Чопра</p>
+<p>10.Коли одні двері щастя закриваються, відкриваються інші; 
+але ми часто не помічаємо їх, втупившись поглядом у зачинені 
+двері.<br>
+ – Хелен Келлер</p>
  </div>
 </div>
 </div>
@@ -101,66 +106,11 @@
 
 <!-- Block main END -->
 
-<!-- footer -->
-
-<div class = "footer container-fluid">
-  <div class = "footer-content container">
-    <div class = "row">
-	  <div class = "footer-section about col-md-4 col-12">
-	    <h3 class = "logo-text"> Мій блог </h3>
-		<p>
-		Мій блог створиней щоб показувати людям актуальну інформацію сьогоднення
-		</p>
-	<div class = "contact">
-	 <span><i class = "fas fa-phone"></i> &nbsp; 097-567-77-88</a></span>
-	  <span><i class = "fas fa-envelope"></i>  &nbsp; ifo@ymlmyblog.com</a></span>
-	</div>
-		
-   <div class = "socials">
-      <a href = "#"><i class = "fab fa-facebook"></i></a>
-	  <a href = "#"><i class = "fab fa-instagram"></i></a>
-	  <a href = "#"><i class = "fab fa-twitter"></i></a>
-	  <a href = "#"><i class = "fab fa-youtube"></i></a>
-   </div>
- </div>
- 
- <div class = "footer-section links col-md-4 col-12">
-    <h3> Quick Links </h3>
-	<br>
-	<ul>
-	  <a href = "#">
-	    <li> Події </li>
-	  </a>
-	  <a href = "#">
-	    <li> Наша команда </li>
-	  </a>
-	  <a href = "#">
-	    <li> Збережене </li>
-	  </a>
-	  <a href = "#">
-	    <li> Поскаржитись </li>
-	  </a>
-	</ul>
-</div>
-
-<div class = "footer-section contact-form col-md-4 col-12">
-  <h3> Зв'яжіться з нами </h3>
-  <br>
-  <form action = "index.html" method = "post">
-    <input type = "email" name = "email" class = "text-input contact-input" placeholder = "Your email adress...">
-	<textarea rows = "4" name = "massage" class = "text-input contact-input" placeholder = "Your massage..."></textarea>
-    <button type = "submit" class = "btn btn-big contact-btn">
-	<h3><i class = "fas fa-envelope"></i> Відправити </h3>
-	</button>
-  </form>
- </div>
-</div>
-    <div class = "footer-bottom">
-     &copy; haydin.com | Designed by Timur
-    </div>
-  </div>
-</div>
-  <!-- // footer -->
+    <!-- FOOTER -->
+     <?php
+     include("srt/clude/footer.php");
+     ?>
+    <!-- FOOTER -->
 		
 	
 	<!-- Optional JavaScript: choose one of the two -->
