@@ -1,5 +1,6 @@
 <?php
 include("path.php");
+include("srt/database/db.php");
 ?>
 <!doctype html>
 <html lang="en">
@@ -43,7 +44,7 @@ include("path.php");
     <div class="carousel-item active">
       <img src="images/hp.png" class="d-block w-100" alt="...">
       <div class="carousel-caption-hack carousel-caption d-none d-md-block">
-        <h5><a href = "\"> First slide label </a></h5>
+        <h5><a href = "blog.php"> First slide label </a></h5>
       </div>
     </div>
     <div class="carousel-item">

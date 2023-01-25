@@ -1,5 +1,6 @@
 <?php
 include("path.php");
+include("srt/controller/users.php");
 ?>
 <!doctype html>
 <html lang="en">
@@ -29,21 +30,25 @@ include("path.php");
 
 <!-- FORM REGISTRATION START -->
 <div class = "container reg_form"> 
-<form class = "row justify-content-md-center" method = "post" action = "log.html">
+<form class = "row justify-content-md-center" method = "post" action = "log.php">
 <h3> Авторизація </h3>
+<div class="mb-3 сol-12 col-md-4 err">
+  <p><?=$errmsg?></p>
+</div>
+<div class = "w-100"></div>
 <div class="mb-3 сol-12 col-md-4">
-  <label for="formGroupExampleInput" class="form-label">Ваш логін</label>
-  <input type="text" class="form-control" id="formGroupExampleInput" placeholder="Example input placeholder">
+  <label for="formGroupExampleInput" class="form-label">Ваша пошта(при реєстрації)</label>
+  <input name = "mail" value = "<?=$email?>" type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Виведіть ваш емейл...">
 </div>
   <div class = "w-100"></div>
   <div class="mb-3 сol-12 col-md-4">
     <label for="exampleInputPassword1" class="form-label">Пароль</label>
-    <input type="password" class="form-control" id="exampleInputPassword1">
+    <input name="password" type="password" class="form-control" id="exampleInputPassword1">
   </div>
   <div class = "w-100"></div>
-  <div class="mb-3 сol-12 col-md-4">
-    <button type="button" class="btn btn-secondary">Вхід</button>
-	<a href = "aut.html"> Зареєструватись </a>
+   <div class="mb-3 сol-12 col-md-4">
+    <button type="submit" name='button-log'  class="btn btn-secondary" name ="button-log">Реєстрація</button>
+	<a href = "reg.php"> Зареєструватись </a>
   </div>
 </form>
 </div>

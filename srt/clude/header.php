@@ -10,15 +10,31 @@
 	    <nav class = "col-8">
 		  <ul>
 		    <li><a href = "<?php echo BASE_URL?>"> Головна </a></li>
-			<li><a href = "<?php echo BASE_URL?>"> Про нас </a></li>
+			<li><a href = "<?php echo BASE_URL . 'about.php'?>"> Про нас </a></li>
 			<li><a href = "#"> Налаштування </a></li>
 			
 			<li>
-			<a href = "#"><i class="fa-solid fa-user"></i> Мій профіль </a>
+			<?php if (isset($_SESSION['id'])): ?>
+			<a href = "#">
+			<i class="fa-solid fa-user"></i> 
+			<?php echo $_SESSION['login']; ?>
+			</a>
 		       <ul>
-			    <li><a href = "log.php"> Адміністративна панель </a></li>
-			    <li><a href = "#"> Вихід </a></li>
+			    <?php if ($_SESSION['admin']): ?>
+			    <li><a href = "#"> Адмін панель </a></li>
+				<?php endif; ?>
+			    <li><a href = "<?php echo BASE_URL . "logout.php"; ?>"> Вихід </a></li>
 			   </ul>
+			<?php else: ?>
+			   <a href = "<?php echo BASE_URL . "log.php"; ?>">
+			     <i class="fa-solid fa-user"></i> 
+			      Увійти
+			   </a>
+			   <ul>
+			    <li><a href = "<?php echo BASE_URL . "reg.php"; ?>"> Реєстрація </a></li>
+			   </ul>
+			<?php endif; ?> 
+			
 			</li>
 	      </ul>
 		</nav>

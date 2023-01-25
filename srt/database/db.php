@@ -1,5 +1,6 @@
 <?php
 
+session_start();
 require 'connect.php';
  
  function pnt($value){
@@ -44,34 +45,33 @@ require 'connect.php';
 }
 
 // Запит на отримання одного рядка з вибраної таблиці
+ 
  function selectOne($table, $params = []){
 	global $pdo;
 	$sql = "SELECT * FROM $table";
 	
 	if(!empty($params)){
 		$i = 0;
-		
-		foreach ($params as $key => $value){
-		  
-		  if(!is_numeric($value)){
-			  $value = "'".$value."'";
-		    }
-			
-			if($i === 0){
+		     foreach ($params as $key => $value){
+		       if(!is_numeric($value)){
+			   $value = "'".$value."'";
+		     }
+			    if($i === 0){
 				$sql = $sql . " WHERE $key=$value";
-			}else{
+			    }else{
 				$sql = $sql . " AND $key=$value";
-			}
+			  }
 			$i++;
 		}
 	}
-	
 	$query = $pdo->prepare($sql);
 	$query->execute();
 	dbCheckError($query);
 	return $query->fetch();
 
-}
+ }
+
+
 
 // Запис в таблицю бази данних
 
@@ -95,6 +95,7 @@ function insert($table, $params){
 	$query = $pdo->prepare($sql);
 	$query->execute();
 	dbCheckError($query);
+	return $pdo->lastInsertId();
 }
 
 // Оновлення рядка в таблиці
