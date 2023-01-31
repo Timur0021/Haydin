@@ -1,5 +1,9 @@
 <?php
 include("path.php");
+include SITE_ROOT . '/srt/database/db.php';
+
+$post = selectOne('post', ['id' => $_GET['post']]);
+pnt($post);
 ?>
 <!doctype html>
 <html lang="en">
@@ -14,7 +18,7 @@ include("path.php");
     <script src="https://kit.fontawesome.com/681833e5f2.js" crossorigin="anonymous"></script>
 	
 	<!-- Custom styling -->
-	<link rel = "stylesheet" href = "css/style.css">
+	<link rel = "stylesheet" href = "style/style.css">
 	<link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https: //fonts.googleapis.com/css2? family= Comfortaa:wght@300 & display=swap" rel="stylesheet">

@@ -9,7 +9,7 @@
 		</div>
 	    <nav class = "col-8">
 		  <ul>
-		    <li><a href = "<?php echo BASE_URL?>"> Головна </a></li>
+		    <li><a href = "<?php echo BASE_URL . 'admin/posts/index.php'?>"> Адмін панель </a></li>
 			<li><a href = "<?php echo BASE_URL . 'about.php'?>"> Про нас </a></li>
 			<li><a href = "#"> Налаштування </a></li>
 			
@@ -21,7 +21,7 @@
 			</a>
 		       <ul>
 			    <?php if ($_SESSION['admin']): ?>
-			    <li><a href = "#"> Адмін панель </a></li>
+			    <li><a href = "category.php"> Адмін панель </a></li>
 				<?php endif; ?>
 			    <li><a href = "<?php echo BASE_URL . "logout.php"; ?>"> Вихід </a></li>
 			   </ul>

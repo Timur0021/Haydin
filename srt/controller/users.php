@@ -1,8 +1,8 @@
 <?php 
-include ('srt/database/db.php');
 
+include SITE_ROOT . '/srt/database/db.php';
 
-$errmsg = '';
+$errmsg = [];
 
 function usersout($user){
 $_SESSION['id'] = $user['id'];
@@ -14,6 +14,9 @@ $_SESSION['admin'] = $user['admin'];
 	 header('location: ' . BASE_URL);
     }
 }
+
+$users = selectAll('users');
+
 //Код для форми реєстрації
 if($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['button-reg'])){
 	
@@ -24,15 +27,15 @@ if($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['button-reg'])){
 	$passS = trim($_POST['pass-second']);
 	
 	if($login === '' || $email === '' || $passF === ''){
-		$errmsg = 'Не всі поля заповнені!';
+		array_push($errmsg, 'Не всі поля заповнені!');
 	}elseif(mb_strlen($login, 'UTF8') < 2){
-		$errmsg = 'Логін повинен бути більшим ніж два символи!';
+		array_push($errmsg, 'Логін повинен бути більшим ніж два символи!');
 	}elseif($passF !== $passS){
-		$errmsg = 'Паролі в обох полях повинні бути однаковими!';
+		array_push($errmsg, 'Паролі в обох полях повинні бути однаковими!');
 	}else{
 		$existence = selectOne('users', ['email' => $email]);
 		if(!empty($existence)){
-			$errmsg = 'Користувач з такою поштою вже зареєстрований!';
+			array_push($errmsg, 'Користувач з такою поштою вже зареєстрований!');
 		}else{
 		$pass = password_hash($passF, PASSWORD_DEFAULT);
 		$post = [
@@ -58,13 +61,13 @@ $email = trim($_POST['mail']);
 $pass = trim($_POST['password']);
 
 if($email === '' || $pass === ''){
-	$errmsg = 'Не всі поля заповнені!';
+	array_push($errmsg, 'Не всі поля заповнені!');
    }else{
    $existence = selectOne('users', ['email' => $email]);
 	if($existence && password_verify($pass, $existence['password'])){
 		usersout($existence);
 	}else{
-		$errmsg = 'Пошта або пароль введені не правельно!';
+		array_push($errmsg, 'Пошта або пароль введені не правельно!');
 	}
   }
 
@@ -72,3 +75,5 @@ if($email === '' || $pass === ''){
 	$email = '';  
   }
 	
+
+

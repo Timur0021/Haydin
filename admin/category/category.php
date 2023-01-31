@@ -1,6 +1,6 @@
 <?php
 include("../../path.php");
-include("../../srt/database/db.php");
+include("../controller/categ.php");
 ?>
 <!doctype html>
 <html lang="en">
@@ -14,7 +14,7 @@ include("../../srt/database/db.php");
     <script src="https://kit.fontawesome.com/681833e5f2.js" crossorigin="anonymous"></script>
 	
 	<!-- Custom styling -->
-	<link rel="stylesheet" href="../../css/admin.css">
+	<link rel="stylesheet" href="../css/admin.css">
 	<link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https: //fonts.googleapis.com/css2? family= Comfortaa:wght@300 & display=swap" rel="stylesheet">
@@ -28,42 +28,31 @@ include("../../srt/database/db.php");
 <!-- header -->
 
 <div class = 'container'>
-   <div class = 'row'>
-      <div class = 'sidebar col-3'>
-	    <ul>
-		  <li>
-		    <a href = ''> Записи </a>
-		  </li>
-		  <li>
-		    <a href = ''> Користувачі </a>
-		  </li>
-		  <li>
-		    <a href = ''> Категорії </a>
-		  </li>
-		</ul>
-	  
-   </div>
-    <div class = 'posts col-9'>
-	<div class = 'button-row'>
-		<a href = 'category.php' name = 'button' type="button" class="col-2 btn btn-success"> Створити категорію </button></a>
-		<a href = 'index.php' name = 'button' type="button" class="col-2 btn btn-danger"> Керувати категоріями </button></a>
+  <?php include('../sidebar.php'); ?>
+    <div class = 'category col-9'>
+	<div class = 'button-cat'>
+		<a href = 'category.php' name = 'button' type="button" class="col-2 btn btn-success"> Створити </button></a>
+		<a href = 'index.php' name = 'button' type="button" class="col-2 btn btn-danger"> Керувати </button></a>
 	</div>	
 	  <div class = 'row title-table'>
 	    <h2> Створити категорію </h2>
 	  </div>
 	  <div class = 'row add-post'>
-	     <form action = 'posts.php' method = 'post'>
+	  <div class="mb-3 сol-12 col-md-4 err">
+          <p><?=$errmsg?></p>
+     </div>
+	     <form action = 'category.php' method = 'post'>
             <div class="col">
-            <input type="text" class="form-control" placeholder="Назва категорії" aria-label="Назва категорії">
+            <input name="name" value="<?=$name;?>" type="text" class="form-control" placeholder="Назва категорії" aria-label="Назва категорії">
             </div>
 
 			<div class="col">
             <label for="content" class="form-label">Опис категорії</label>
-            <textarea class="form-control" id="content" rows="3"></textarea>
+            <textarea name="description" class="form-control" id="content" rows="3"><?=$description;?></textarea>
             </div>
 			
 		<div class="col">
-        <button class="btn btn-primary" type="submit">Створити категорію</button>
+      <button name="button-cat" type="submit" class="btn btn-primary">Створити категорію</button>
         </div>
 		 </form>
 	  </div>
@@ -88,5 +77,7 @@ include("../../srt/database/db.php");
 	<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous"></script>
      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js" integrity="sha384-mQ93GR66B00ZXjt0YO5KlohRA5SY2XofN4zfuZxLkoj1gXtW8ANNCe9d5Y3eG5eD" crossorigin="anonymous"></script>
     -->
+	
+	
   </body>
 </html>

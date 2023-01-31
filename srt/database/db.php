@@ -7,7 +7,9 @@ require 'connect.php';
 	 echo '<pre>';
 	 print_r ($value);
 	 echo '</pre>';
+	 exit();
  }
+ 
  // Перевірка до бази данних
  function dbCheckError($query){
 	$errInfo = $query->errorInfo();
@@ -128,4 +130,64 @@ function delete($table, $id){
 	$query = $pdo->prepare($sql);
 	$query->execute();
 	dbCheckError($query);
+}
+
+//Вибірка постів з автором в адмін панель
+
+function selectAllFromPost($table1, $table2){
+	global $pdo;
+	
+    $sql = "
+	SELECT 
+    t1.id,
+	t1.title,
+	t1.img,
+	t1.content,
+	t1.status,
+	t1.id_topic,
+	t1.create_date,
+	t2.username
+	
+	FROM $table1 AS t1 JOIN $table2 AS t2 ON t1.id_user = t2.id";
+	$query = $pdo->prepare($sql);
+	$query->execute();
+	dbCheckError($query);
+	return $query->fetchAll();
+}
+
+//Виборка поста з автором на головну сторінку сайту
+
+function selectAllFromPostOnIndex($table1, $table2){
+	global $pdo;
+	
+    $sql = "SELECT p.*, u.username FROM $table1 AS p JOIN $table2 AS u ON p.id_user = u.id WHERE p.status=1";
+	$query = $pdo->prepare($sql);
+	$query->execute();
+	dbCheckError($query);
+	return $query->fetchAll();
+}
+
+//Виборка поста в слайдер шоу
+
+function selectTopFromPostOnIndex($table1){
+	global $pdo;
+	
+    $sql = "SELECT * FROM $table1 WHERE id_topic = 23";
+	$query = $pdo->prepare($sql);
+	$query->execute();
+	dbCheckError($query);
+	return $query->fetchAll();
+}
+
+//Пошук по заголовкам і вмісту
+
+function searchInTitle($term, $table1, $table2){
+	$term = trim(strip_tags(stripcslashes(htmlspecialchars($term))));
+	global $pdo;
+	
+    $sql = "SELECT p.*, u.username FROM $table1 AS p JOIN $table2 AS u ON p.id_user = u.id WHERE p.status=1 AND p.title LIKE '%$term%' OR p.content LIKE '%$term%'";
+	$query = $pdo->prepare($sql);
+	$query->execute();
+	dbCheckError($query);
+	return $query->fetchAll();
 }

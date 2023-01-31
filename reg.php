@@ -18,7 +18,7 @@ include("srt/controller/users.php");
     <script src="https://kit.fontawesome.com/681833e5f2.js" crossorigin="anonymous"></script>
 	
 	<!-- Custom styling -->
-	<link rel = "stylesheet" href = "css/style.css">
+	<link rel = "stylesheet" href = "style/style.css">
 	<link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https: //fonts.googleapis.com/css2? family= Comfortaa:wght@300 & display=swap" rel="stylesheet">
@@ -35,9 +35,6 @@ include("srt/controller/users.php");
 <div class = "container reg_form"> 
 <form class = "row justify-content-md-center" method = "post" action = "reg.php">
 <h3> Форма регістрації </h3>
-<div class="mb-3 сol-12 col-md-4 err">
-  <p><?=$errmsg?></p>
-</div>
 <div class = "w-100"></div>
 <div class="mb-3 сol-12 col-md-4">
   <label for="formGroupExampleInput" class="form-label">Ваш логін</label>

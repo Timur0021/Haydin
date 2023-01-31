@@ -1,6 +1,9 @@
 <?php
 include("path.php");
-include("srt/database/db.php");
+include("admin/controller/categ.php");
+$posts = selectAllFromPostOnIndex('post', 'users');
+$topSlider = selectTopFromPostOnIndex('post');
+
 ?>
 <!doctype html>
 <html lang="en">
@@ -15,7 +18,7 @@ include("srt/database/db.php");
     <script src="https://kit.fontawesome.com/681833e5f2.js" crossorigin="anonymous"></script>
 	
 	<!-- Custom styling -->
-	<link rel = "stylesheet" href = "css/style.css">
+	<link rel = "stylesheet" href = "style/style.css">
 	<link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https: //fonts.googleapis.com/css2? family= Comfortaa:wght@300 & display=swap" rel="stylesheet">
@@ -34,33 +37,27 @@ include("srt/database/db.php");
  <div class = "row">
    <h2 class = "slider-title"> Топ опублікування </h2>
  </div>
-    <div id="carouselExampleCaptions" class="carousel slide">
-  <div class="carousel-indicators">
-    <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-    <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1" aria-label="Slide 2"></button>
-    <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2" aria-label="Slide 3"></button>
-  </div>
+    <div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="carousel">
+  
+    <div class="carousel-inner">
   <div class="carousel-inner">
+    <?php foreach($topSlider as $key => $post):?>
+	<?php if($key == 0): ?>
     <div class="carousel-item active">
-      <img src="images/hp.png" class="d-block w-100" alt="...">
+	<?php else: ?>
+	<div class="carousel-item">
+	<?php endif; ?> 
+      <img src="<?=BASE_URL . 'images/img_post/' . $post['img']?>" alt = "<?=$post['title']?>" class="d-block w-100">
       <div class="carousel-caption-hack carousel-caption d-none d-md-block">
-        <h5><a href = "blog.php"> First slide label </a></h5>
+        <h5><a href = "<?=BASE_URL . 'blog.php?post=' . $post['id'];?>"><?=substr($post['title'], 0, 120) . '...' ?></a></a></h5>
       </div>
     </div>
-    <div class="carousel-item">
-      <img src="images/lui.png" class="d-block w-100" alt="...">
-      <div class="carousel-caption-hack carousel-caption d-none d-md-block">
-        <h5><a href = "\"> Second slide label </a></h5>
-      </div>
-    </div>
-    <div class="carousel-item">
-      <img src="images/pietro.png" class="d-block w-100" alt="...">
-      <div class="carousel-caption-hack carousel-caption d-none d-md-block">
-        <h5><a href = "\"> Third slide label </a></h5>
-      </div>
-    </div>
+	<?php endforeach; ?>
+   </div>
   </div>
-  <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
+</div>
+   
+   <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
     <span class="carousel-control-prev-icon" aria-hidden="true"></span>
     <span class="visually-hidden">Previous</span>
   </button>
@@ -82,56 +79,42 @@ include("srt/database/db.php");
 
 <div class = "main-content col-md-9 col-12">
     <h3> Остання публікація </h3>
-	
+	<?php foreach($posts as $post): ?> 
 	<div class = "post row">
 	  <div class = "img col-12 col-md-4">
-	    <img src = "images/pietro.png" alt = "" class = "img-thumbnail">
+	    <img src = "<?=BASE_URL . 'images/img_post/' . $post['img']?>" alt = "<?=$post['title']?>" class = "img-thumbnail">
 </div>
 <div class = "post_text col-12 col-md-8">
 <h3>
- <a href = "#"> Класна публікація на тему людина і навколишнє середовище... </a>
+ <a href = "<?=BASE_URL . 'blog.php?post=' . $post['id'];?>"><?=substr($post['title'], 0, 120) . '...' ?></a>
  </h3>
- <i class = "far fa-user"> Ім'я Автора </i>
- <i class = "far- fa-calendar"> 7 Січня 2023 рік </i>
+ <i class = "far fa-user"> <?=$post['username'];?> </i>
+ <i class = "far- fa-calendar"> <?=$post['create_date'];?> </i>
  <p class = "preview-text">
-     Спасіння світу лежить у людському серці, у людській спроможності міркувати, в людській лагідності і у людській відповідальності. 
+	 <?=mb_substr($post['content'], 0, 150, 'UTF-8'). '...' ?>
  </p>
  </div>
+</div>
+<?php endforeach ?>
 </div>
 
-<div class = "main-content col-md-12 col-12">
-<div class = "post row">
-	  <div class = "img col-12 col-md-4">
-	    <img src = "images/anderso.png" alt = "" class = "img-thumbnail">
-</div>
-<div class = "post_text col-12 col-md-8">
-<h3>
- <a href = "#"> Фото - це мистецтво... </a>
- </h3>
- <i class = "far fa-user"> Ім'я Автора </i>
- <i class = "far- fa-calendar"> 7 Січня 2023 рік </i>
- <p class = "preview-text">
-    Щастя в моментах
- </p>
- </div>
-</div>
-</div>
-</div>
 <!-- sidebar Content-->
 <div class = "sidebar col-md-3 col-12">
 <div class = "section search">
-  <h3> Search </h3>
-    <form action = "index.html" method = "post">
-	  <input type = "text" name = "search-form" class = "text-input" placeholder = "Пошук...">
+  <h3> Пошук </h3>
+    <form action = "search.php" method = "post">
+	  <input type = "text" name = "search-term" class = "text-input" placeholder = "Пошук...">
 	</form>
 </div>
 
 <div class = "section topics">
-   <h3> Пошук </h3>
+   <h3> Категорії </h3>
      <ul>
-        <li><a href = "#"> Друзі </a></li>
-		<li><a href = "#"> Цікаві місця </a></li>
-		<li><a href = "#"> poems </a></li>
+        <?php foreach ($categ as $key => $topig): ?>
+		<li>
+		<a href = "#"> <?=$topig['name'];?> </a>
+		</li>
+		<?php endforeach; ?>
 	</ul>
 </div>
     </div>

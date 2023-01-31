@@ -1,6 +1,6 @@
 <?php
 include("../../path.php");
-include("../../srt/database/db.php");
+include("../controller/post.php");
 ?>
 <!doctype html>
 <html lang="en">
@@ -14,7 +14,7 @@ include("../../srt/database/db.php");
     <script src="https://kit.fontawesome.com/681833e5f2.js" crossorigin="anonymous"></script>
 	
 	<!-- Custom styling -->
-	<link rel="stylesheet" href="../../css/admin.css">
+	<link rel="stylesheet" href="../css/admin.css">
 	<link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https: //fonts.googleapis.com/css2? family= Comfortaa:wght@300 & display=swap" rel="stylesheet">
@@ -28,41 +28,33 @@ include("../../srt/database/db.php");
 <!-- header -->
 
 <div class = 'container'>
-   <div class = 'row'>
-      <div class = 'sidebar col-3'>
-	    <ul>
-		  <li>
-		    <a href = ''> Записи </a>
-		  </li>
-		  <li>
-		    <a href = ''> Користувачі </a>
-		  </li>
-		  <li>
-		    <a href = ''> Категорії </a>
-		  </li>
-		</ul>
-	  
-   </div>
+   <?php include('../sidebar.php'); ?>
     <div class = 'posts col-9'>
 	<div class = 'button-row'>
-		<a href = 'posts.php' name = 'button' type="button" class="col-2 btn btn-success"> Add Post </button></a>
-		<a href = 'index.php' name = 'button' type="button" class="col-2 btn btn-danger"> Manege Posts </button></a>
+		<a href = 'posts.php' name = 'button' type="button" class="col-2 btn btn-success"> Створити  </button></a>
+		<a href = 'index.php' name = 'button' type="button" class="col-2 btn btn-danger"> Керувати  </button></a>
 	</div>	
 	  <div class = 'row title-table'>
 	    <h2> Керування постами </h2>
 	      <div class = 'id col-1'> ID </div>
 		  <div class = 'title col-5'> Назва </div> 
 		  <div class = 'author col-2'> Автор </div> 
-		  <div class = 'red col-2'> Редагувати </div> 
-		  <div class = 'del col-2'> Видалити </div>
+		  <div class = 'del col-4'> Керувати </div>
 	  </div>
+	  <?php foreach($postsAdm as $key => $post): ?>
 	  <div class = 'row post'>
-	      <div class = 'id col-1'> 1 </div>
-		  <div class = 'title col-5'> Нова стаття  </div> 
-		  <div class = 'author col-2'> admin </div> 
-		  <div class = 'red col-2'><a href = ''> edid </a></div> 
-		  <div class = 'del col-2'><a href = ''> delete </a></div>
+	      <div class = 'id col-1'><?=$key + 1; ?></div>
+		  <div class = 'title col-5'><?=$post['title']; ?></div> 
+		  <div class = 'author col-2'><?=$post['username']; ?></div> 
+		  <div class = 'red col-1'><a href = 'edit.php?id=<?=$post['id'];?>'> edid </a></div> 
+		  <div class = 'del col-1'><a href = 'edit.php?del_id=<?=$post['id'];?>'> delete </a></div>
+		  <?php if($post['status']): ?>
+		  <div class = 'stat col-2'><a href = 'edit.php?publish=0&public_id=<?=$post['id'];?>'> unpublish </a></div>
+		  <?php else: ?>
+		  <div class = 'stat col-2'><a href = 'edit.php?publish=1&public_id=<?=$post['id'];?>'> publish </a></div>
+		  <?php endif; ?>
 	  </div>
+	  <?php endforeach ?>
 	</div>
 </div>
 

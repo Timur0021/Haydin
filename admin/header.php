@@ -8,7 +8,8 @@
 		</div>
 	    <nav class = "col-8">
 		<ul>
-		  <li>  
+	       <li><a href = "<?php echo BASE_URL . "index.php"; ?>"> Головна </a></li>
+		   <li>
 			<a href = "#">
 			    <i class="fa-solid fa-user"></i> 
 			    <?php echo $_SESSION['login']; ?>
