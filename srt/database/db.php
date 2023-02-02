@@ -10,6 +10,12 @@ require 'connect.php';
 	 exit();
  }
  
+ function ptn($value){
+	 echo '<pre>';
+	 print_r ($value);
+	 echo '</pre>';
+ }
+ 
  // Перевірка до бази данних
  function dbCheckError($query){
 	$errInfo = $query->errorInfo();
@@ -191,3 +197,19 @@ function searchInTitle($term, $table1, $table2){
 	dbCheckError($query);
 	return $query->fetchAll();
 }
+
+//Виборка одного поста з автором для blog.php
+
+function selectPostFromWithUserOnBlog($table1, $table2, $id){
+	global $pdo;
+	
+    $sql = "SELECT p.*, u.username FROM $table1 AS p JOIN $table2 AS u ON p.id_user = u.id WHERE p.id=$id";
+	$query = $pdo->prepare($sql);
+	$query->execute();
+	dbCheckError($query);
+	return $query->fetch();
+}
+
+
+
+
