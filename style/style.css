@@ -397,18 +397,6 @@ button.btn.btn-big.contact-btn {
 }
 
 
-/* FORMS */
 
-form div.err p {
-	color: red;
-	font-style: italic;
-	font-size: 0.8rem;
-}
-
-/* COMMENTS */
-
-.all-comments{
-	padding-top: 3rem;
-}
 
 
