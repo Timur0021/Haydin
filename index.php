@@ -1,9 +1,11 @@
 <?php
 include("path.php");
 include("admin/controller/categ.php");
+
+
+
 $posts = selectAllFromPostOnIndex('post', 'users');
 $topSlider = selectTopFromPostOnIndex('post');
-
 ?>
 <!doctype html>
 <html lang="en">
@@ -78,7 +80,7 @@ $topSlider = selectTopFromPostOnIndex('post');
 <!-- Main Content -->
 
 <div class = "main-content col-md-9 col-12">
-    <h3> Остання публікація </h3>
+    <h3> Останні публікації </h3>
 	<?php foreach($posts as $post): ?> 
 	<div class = "post row">
 	  <div class = "img col-12 col-md-4">
@@ -112,7 +114,7 @@ $topSlider = selectTopFromPostOnIndex('post');
      <ul>
         <?php foreach ($categ as $key => $topig): ?>
 		<li>
-		<a href = "#"> <?=$topig['name'];?> </a>
+		<a href = "<?=BASE_URL . 'topics.php?id=' . $topig['id'];?>"> <?=$topig['name'];?> </a>
 		</li>
 		<?php endforeach; ?>
 	</ul>

@@ -2,9 +2,10 @@
 	  <div class = "container">
 	    <div class = "row">
 		  <div class = "col-4">
-		    
-			<a href ="<?php echo BASE_URL ?>"> <h1> My Site</h1> </a> 
-			
+		    <h1>
+			<a href ="<?php echo BASE_URL ?>">  My Site </a> 
+			<i class="fa-solid fa-fish"></i>
+			</h1>
 		</div>
 	    <nav class = "col-8">
 		<ul>

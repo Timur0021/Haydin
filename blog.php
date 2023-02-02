@@ -1,9 +1,7 @@
 <?php
 include("path.php");
-include SITE_ROOT . '/srt/database/db.php';
-
-$post = selectOne('post', ['id' => $_GET['post']]);
-pnt($post);
+include("admin/controller/categ.php");
+$post = selectPostFromWithUserOnBlog('post', 'users', $_GET['post']);
 ?>
 <!doctype html>
 <html lang="en">
@@ -39,74 +37,29 @@ pnt($post);
 <!-- Main Content -->
 
 <div class = "main-content col-md-9 col-12">
-    <h3> Топ - 10 Цитат про щастя </h3>
+    <h3><?php echo $post['title']; ?></h3>
 	
 	  <div class = "blog_post row"> 
 	  <div class = "img col-12">
-	    <img src = "images/hp.png" alt = "" class = "img-thumbnail">
+	    <img src = "<?=BASE_URL . 'images/img_post/' . $post['img']?>" alt = "<?=$post['title']?>" class = "img-thumbnail">
 		<div class = "info">
-		<i class = "far fa-user"> Ben </i>
-        <i class = "fa-regular fa-calendar"> 10 Січня 2023 рік</i>
+		<i class = "far fa-user"> <?=$post['username'];?> </i>
+        <i class = "fa-regular fa-calendar"> <?=$post['create_date'];?> </i>
 		</div>
 </div>
 <div class = "blog_post_text col-12">
+    <?=$post['content'];?>
 
-<h3> Підібрані цитати </h3>
-
- <p>1.Яка різниця, хто сильніший, хто розумніший, хто красивіший, хто багатший? 
- Адже, в кінцевому підсумку, має значення тільки те, щаслива ти людина чи ні.<br>
-  – Ошо</p>
-<p>2.Люди можуть бути щасливі лише за умови, що вони не вважають щастя метою 
-життя.<br> 
- – Джордж Оруелл</p>
-<p>3.Багато хто шукає щастя в сферах вище свого рівня, інші – нижче. Але щастя 
-одного зросту з людиною.<br> 
- – Конфуцій</p>
-<p>4.Однією з головних ознак щастя і гармонії є повна відсутність 
-потреби комусь щось доводити.<br>
- – <a href = "#">Нельсон Мандела</a> </p>
-<p>5.Для щастя треба або зменшити бажання, або збільшити засоби.<br> 
-  – Бенджамін Франклін</p>
-<p>6.Здоровий жебрак щасливіший за хворого короля.<br> 
- – Артур Шопенгауер </p>
-<p>7.Книга про щастя складалася б з однієї сторінки. Про смуток можна писати
- безкінечно довго.<br> 
-  – Януш Леон Вишневський</p>
-<p>8.Щастя – це не вдале поєднання зовнішніх обставин. Це просто стан 
-вашого розуму.<br> 
- – Сіддхартха Гаутама (Будда)</p>
-<p>9.Бути щасливим не означає, що у вас все досконало, це означає, що ви 
-навчилися дивитися крізь недосконалості.<br>
- – Пріянка Чопра</p>
-<p>10.Коли одні двері щастя закриваються, відкриваються інші; 
-але ми часто не помічаємо їх, втупившись поглядом у зачинені 
-двері.<br>
- – Хелен Келлер</p>
- </div>
-</div>
-</div>
-
-<!-- sidebar Content-->
-
-<div class = "sidebar col-md-3 col-12">
-<div class = "section search">
-  <h3> Search </h3>
-    <form action = "index.html" method = "post">
-	  <input type = "text" name = "search-form" class = "text-input" placeholder = "Пошук...">
-	</form>
-</div>
-
-<div class = "section topics">
-   <h3> Пошук </h3>
-     <ul>
-        <li><a href = "#"> Друзі </a></li>
-		<li><a href = "#"> Цікаві місця </a></li>
-		<li><a href = "#"> poems </a></li>
-	</ul>
-</div>
     </div>
+	<!-- Coments -->
+	<?php include('srt/clude/coment.php'); ?>
+	<!-- Coments -->
   </div>
 </div>
+</div>
+</div>
+
+
 
 <!-- Block main END -->
 

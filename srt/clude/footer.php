@@ -12,10 +12,10 @@
 	</div>
 		
    <div class = "socials">
-      <a href = "#"><i class = "fab fa-facebook"></i></a>
-	  <a href = "#"><i class = "fab fa-instagram"></i></a>
-	  <a href = "#"><i class = "fab fa-twitter"></i></a>
-	  <a href = "#"><i class = "fab fa-youtube"></i></a>
+      <a href = "https://ru-ru.facebook.com/"><i class = "fab fa-facebook"></i></a>
+	  <a href = "https://www.instagram.com/"><i class = "fab fa-instagram"></i></a>
+	  <a href = "https://twitter.com/?lang=ru"><i class = "fab fa-twitter"></i></a>
+	  <a href = "https://www.youtube.com/"><i class = "fab fa-youtube"></i></a>
    </div>
  </div>
  

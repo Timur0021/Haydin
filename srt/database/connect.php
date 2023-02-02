@@ -17,7 +17,7 @@ try {
 	
 	
 } catch (PDOException $i){
-	die('ERROR FUCK YOU');
+	die('ERROR');
 	
 }
 
