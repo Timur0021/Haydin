@@ -15,7 +15,7 @@ include("srt/controller/users.php");
     <script src="https://kit.fontawesome.com/681833e5f2.js" crossorigin="anonymous"></script>
 	
 	<!-- Custom styling -->
-	<link rel = "stylesheet" href = "style/style.css">
+	<link rel = "stylesheet" href = "../../style/style.css">
 	<link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https: //fonts.googleapis.com/css2? family= Comfortaa:wght@300 & display=swap" rel="stylesheet">
